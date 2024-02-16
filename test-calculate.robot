@@ -16,6 +16,8 @@ Get Calculation JSON
 
 
 *** Test Cases ***
+Example Test
+    Log    Hello, this is a test case
 # Test Calculate Numbers 4 and 2
 
 #     ${resp}=     GET    http://127.0.0.1:5000/plus/4/2
