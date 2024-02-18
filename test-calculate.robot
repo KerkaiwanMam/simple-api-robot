@@ -17,7 +17,9 @@ Get Plus JSON
     [return]    ${resp.json()}
 
 *** Test Cases ***
-Test Plus Numbers 4 and 2 (ฺBefore Using Keywords)
+
+
+Test Plus Numbers 4 and 2 (Before Using Keywords)
 
     ${resp}=     GET    ${BASE_URL}/plus/4/2
 
@@ -25,21 +27,29 @@ Test Plus Numbers 4 and 2 (ฺBefore Using Keywords)
 
     ${json_resp}=    Set Variable  ${resp.json()}
 
-    Should Be Equal    ${json_resp}    ${6}
+    ${expected_result}=    Evaluate    {'result': 6}
 
-Test Plus Numbers 5 and 6 (ฺBefore Using Keywords)
+    Should Be Equal    ${json_resp}    ${expected_result}
+Test Plus Numbers 5 and 6 (Before Using Keywords)
 
-    ${resp}=     GET    ${BASE_URL}/plus/5/6
+    ${resp}=     GET    ${BASE_URL}/plus/-5/-6
 
     Should Be Equal    ${resp.status_code}    ${200}
 
     ${json_resp}=    Set Variable  ${resp.json()}
 
-    Should Be Equal    ${json_resp}    ${11}
+    ${expected_result}=    Evaluate    {'result': -11}
 
+    Should Be Equal    ${json_resp}    ${expected_result}
 
-Test Calculate Numbers 3 and 4
+Test Plus Numbers 10000000 and 15000000 (Before Using Keywords)
 
-    ${json_resp}=    Get Plus JSON    ${4}    ${2}
+    ${resp}=     GET    ${BASE_URL}/plus/10000000/15000000
 
-    Should Be Equal    ${json_resp}    ${6}
+    Should Be Equal    ${resp.status_code}    ${200}
+
+    ${json_resp}=    Set Variable  ${resp.json()}
+
+    ${expected_result}=    Evaluate    {'result': 25000000}
+
+    Should Be Equal    ${json_resp}    ${expected_result}
