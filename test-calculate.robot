@@ -2,7 +2,7 @@
 Library    RequestsLibrary
 
 *** Variables ***
-${BASE_URL}    http://localhost:9082
+${BASE_URL}    http://localhost:9083
 
 *** Keywords ***
 
